@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+                     debug="false">
+    <!-- ===================================================================== -->
+    <!--                                                                       -->
+    <!--  Log4j Configuration                                                  -->
+    <!--                                                                       -->
+    <!-- ===================================================================== -->
+    <!-- =========================================== -->
+    <!-- Append System performance information to system-performance.log file -->
+    <!-- =========================================== -->
+    <appender name="aspect.system-performance.appender" class="org.familysearch.logging.appenders.SelfCleaningRollingFileAppender">
+        <param name="File" value="/home/fs/log/system-performance${unified.system.jvm.identifier}.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxBackupIndex" value="10"/>
+        <param name="LogDuration" value="1"/>
+        <param name="Encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %m %n"/>
+        </layout>
+    </appender>
+    <!-- ======================= -->
+    <!-- System Performance Logging  -->
+    <!-- ======================= -->
+    <logger name="aspect.system-performance.logger" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="aspect.system-performance.appender"/>
+    </logger>
+
+    <!-- ======================= -->
+    <!-- Setup the Root logger -->
+    <!-- ======================= -->
+    <root>
+        <level value="error"/>
+        <appender-ref ref="aspect.system-performance.appender"/>
+    </root>
+</log4j:configuration>

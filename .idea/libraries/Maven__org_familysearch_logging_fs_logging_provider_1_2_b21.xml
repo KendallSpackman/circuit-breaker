@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.familysearch.logging:fs-logging-provider:1.2.b21">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/familysearch/logging/fs-logging-provider/1.2.b21/fs-logging-provider-1.2.b21.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/familysearch/logging/fs-logging-provider/1.2.b21/fs-logging-provider-1.2.b21-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/familysearch/logging/fs-logging-provider/1.2.b21/fs-logging-provider-1.2.b21-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
