@@ -27,7 +27,7 @@ public class MetricsFilter extends ClientFilter {
         String scope = clientRequest.getURI().getHost() + "/" + getFirstInUriPath(clientRequest.getURI());
 
         ClientResponse clientResponse;
-        final Timer responses = metrics.timer(MetricRegistry.name(MetricsFilter.class, "responses", scope));
+        final Timer responses = metrics.timer(MetricRegistry.name(MetricsFilter.class, scope, "response-time"));
         final Timer.Context context = responses.time();
         try {
             clientResponse = getNext().handle(clientRequest);

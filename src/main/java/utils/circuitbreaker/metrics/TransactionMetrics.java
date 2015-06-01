@@ -132,7 +132,7 @@ public class TransactionMetrics implements Transactions {
         public Transactions ofLast(Duration duration) {
             return since(Instant.now().minus(duration));
         }
-                        
+
         public Transactions since(Instant fromTime) {
             HashSet<Transaction> set = new HashSet<Transaction>();
             for(Transaction t : all()){

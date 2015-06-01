@@ -40,10 +40,9 @@ public class ErrorRateBasedHealthPolicy implements HealthPolicy  {
     
     @Override
     public boolean isHealthy(String scope) {
-        Transactions transactions =  metricsRegistry.transactions(scope).ofLast(Duration.ofMinutes(1));
+        Transactions transactions =  metricsRegistry.transactions(scope).ofLast(Duration.ofSeconds(10));
 
-        boolean b = transactions.size() > thresholdMinReqPerMin;
-        return ! (b &&        // check threshold reached?
+        return ! (transactions.size() > thresholdMinReqPerMin &&        // check threshold reached?
                   (transactions.failed().size() == transactions.size()) && // every call failed?
                   (true)                                    );             // client connection pool limit reached?
     }

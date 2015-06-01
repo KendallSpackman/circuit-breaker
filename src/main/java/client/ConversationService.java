@@ -5,6 +5,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.familysearch.jersey.JerseyFacadeClient;
 import utils.jaxrs.client.circuitbreaker.ClientCircuitBreakerFilter;
+import utils.metrics.MetricsFilter;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
@@ -14,11 +15,10 @@ public class ConversationService {
 
     private static Client client2;
     private URI uri;
-
     //static initializer -- when loaded
     static{
         client2 = new JerseyFacadeClient();
-        //client2.register(ClientCircuitBreakerFilter.class);
+        client2.addFilter(new MetricsFilter());
         client2.addFilter(new ClientCircuitBreakerFilter());
         client2.setReadTimeout(1000);
         client2.setConnectTimeout(10000);
@@ -27,7 +27,7 @@ public class ConversationService {
     }
 
     public ConversationService(){
-        uri = UriBuilder.fromUri("http://localhost:8080/hello-world").build();
+        this(UriBuilder.fromUri("http://localhost:8080/hello-world").build());
     }
 
     public ConversationService(URI uri){

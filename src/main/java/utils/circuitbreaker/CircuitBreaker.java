@@ -56,7 +56,7 @@ public class CircuitBreaker {
         public boolean isRequestAllowed() {
             if(policy.isHealthy(scope)) return true;
             else{
-                LOGGER.info("The circuit has been changed to an open state for " + scope);
+                LOGGER.info("Circuit breaker state change state=open host=" + scope);
                 return changeState(new OpenState()).isRequestAllowed();
             }
             // return (policy.isHealthy(scope)) ? true
@@ -73,7 +73,7 @@ public class CircuitBreaker {
         public boolean isRequestAllowed() {
             if(!Instant.now().isAfter(exitDate)) return false;
             else{
-                LOGGER.info("The circuit has been changed to a half-open state for " + scope);
+                LOGGER.info("Circuit breaker state change state=half-open host=" + scope);
                 return changeState(new HalfOpenState()).isRequestAllowed();
             }
 //            return (Instant.now().isAfter(exitDate)) ? changeState(new HalfOpenState()).isRequestAllowed()
@@ -84,15 +84,15 @@ public class CircuitBreaker {
     
     
     private final class HalfOpenState implements CircuitBreakerState {
-        private double chance = 0.02;  // 2% will be passed through
+        private double chance = 0.05;  // 5% will be passed through
 
         @Override
         public boolean isRequestAllowed() {
-            if(policy.isHealthy(scope)){
-                LOGGER.info("The circuit has been changed to a closed state for " + scope);
+            if(!policy.isHealthy(scope)) return random.nextDouble() <= chance;
+            else{
+                LOGGER.info("Circuit breaker state change state=closed host=" + scope);
                 return changeState(new ClosedState()).isRequestAllowed();
             }
-            else return random.nextDouble() <= chance;
 //            return (policy.isHealthy(scope)) ? changeState(new ClosedState()).isRequestAllowed()
 //                                             : (random.nextDouble() <= chance);
         }

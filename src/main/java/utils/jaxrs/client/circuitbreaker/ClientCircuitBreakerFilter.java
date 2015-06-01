@@ -43,11 +43,12 @@ public class ClientCircuitBreakerFilter extends ClientFilter {
         String scope = clientRequest.getURI().getHost() + "/" + getFirstInUriPath(clientRequest.getURI());
 
         if (!circuitBreakerRegistry.get(scope).isRequestAllowed()) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
-            }
+//            // Don't forget to get rid of this!
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                System.out.println(e.getMessage());
+//            }
             throw new CircuitOpenedException("circuit is open");
         }
 
