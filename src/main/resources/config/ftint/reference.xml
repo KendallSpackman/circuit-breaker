@@ -1,0 +1,335 @@
+<?xml version='1.0'?>
+<reference id="ftint">
+  <description/>
+  <owner/> 
+  <service id="logging">
+    <host id="ftint-log-02.a.fsglobal.net">
+       <network address="10.34.158.27" partition="mono"/>
+       <class id="log"/>
+    </host>
+    <host id="ftint-log-01.a.fsglobal.net">
+       <network address="10.34.157.240" partition="mono"/>
+       <class id="log"/>
+    </host>
+  </service>
+  <service id="md-app-monitoring">
+    <host id="ftint-app-monitoring-02.a.fsglobal.net">
+       <network address="10.34.157.160" partition="mono"/>
+       <class id="app-monitoring"/>
+    </host>
+    <host id="ftint-app-monitoring-01.a.fsglobal.net">
+       <network address="10.34.157.159" partition="mono"/>
+       <class id="app-monitoring"/>
+    </host>
+  </service>
+  <service id="md-notif-parser">
+    <host id="ftint-log-02.a.fsglobal.net">
+       <network address="10.34.158.27" partition="mono"/>
+       <class id="notif-parser"/>
+    </host>
+    <host id="ftint-log-01.a.fsglobal.net">
+       <network address="10.34.157.240" partition="mono"/>
+       <class id="notif-parser"/>
+    </host>
+  </service>
+  <service id="md-web-static-content">
+    <host id="ftint-web-static-02.a.fsglobal.net">
+       <network address="10.34.158.243" partition="mono"/>
+       <class id="web"/>
+       <class id="web-fs"/>
+    </host>
+    <host id="ftint-web-static-01.a.fsglobal.net">
+       <network address="10.34.158.242" partition="mono"/>
+       <class id="web"/>
+       <class id="web-fs"/>
+    </host>
+  </service>
+  <service id="md-webapp">
+    <host id="ftint-tem-ord-ors2cp-03.a.fsglobal.net">
+       <network address="10.34.158.251" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+    <host id="ftint-tem-ord-ors2cp-02.a.fsglobal.net">
+       <network address="10.34.158.250" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+    <host id="ftint-tem-ord-ors2cp-01.a.fsglobal.net">
+       <network address="10.34.158.249" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+    <host id="ftint-webapp-06.a.fsglobal.net">
+       <network address="10.34.158.236" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+    <host id="ftint-webapp-05.a.fsglobal.net">
+       <network address="10.34.158.235" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+    <host id="ftint-webapp-04.a.fsglobal.net">
+       <network address="10.34.158.234" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+    <host id="ftint-webapp-03.a.fsglobal.net">
+       <network address="10.34.158.233" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+    <host id="ftint-webapp-02.a.fsglobal.net">
+       <network address="10.34.158.232" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+    <host id="ftint-webapp-01.a.fsglobal.net">
+       <network address="10.34.158.231" partition="mono"/>
+       <class id="app-fs"/>
+       <class id="app-fs-ui"/>
+    </host>
+  </service>
+  <service id="md-worker">
+    <host id="ftint-md-worker-q36-01.a.fsglobal.net">
+       <network address="10.34.158.163" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q35-01.a.fsglobal.net">
+       <network address="10.34.158.162" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q34-01.a.fsglobal.net">
+       <network address="10.34.158.161" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q33-01.a.fsglobal.net">
+       <network address="10.34.158.160" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q26-01.a.fsglobal.net">
+       <network address="10.34.158.159" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q21-01.a.fsglobal.net">
+       <network address="10.34.158.158" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q19-01.a.fsglobal.net">
+       <network address="10.34.158.157" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q16-01.a.fsglobal.net">
+       <network address="10.34.158.156" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q15-01.a.fsglobal.net">
+       <network address="10.34.158.155" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q14-01.a.fsglobal.net">
+       <network address="10.34.158.154" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q13-01.a.fsglobal.net">
+       <network address="10.34.158.153" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q10-01.a.fsglobal.net">
+       <network address="10.34.158.152" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q7-01.a.fsglobal.net">
+       <network address="10.34.158.151" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q6-01.a.fsglobal.net">
+       <network address="10.34.158.150" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+    <host id="ftint-md-worker-q5-01.a.fsglobal.net">
+       <network address="10.34.158.149" partition="mono"/>
+       <class id="worker"/>
+       <class id="app-worker"/>
+    </host>
+  </service>
+  <service id="public-api">
+    <host id="ftint-public-api-06.a.fsglobal.net">
+       <network address="10.34.158.220" partition="mono"/>
+       <class id="app-public-api"/>
+    </host>
+    <host id="ftint-public-api-05.a.fsglobal.net">
+       <network address="10.34.158.219" partition="mono"/>
+       <class id="app-public-api"/>
+    </host>
+    <host id="ftint-public-api-04.a.fsglobal.net">
+       <network address="10.34.158.218" partition="mono"/>
+       <class id="app-public-api"/>
+    </host>
+    <host id="ftint-public-api-03.a.fsglobal.net">
+       <network address="10.34.158.217" partition="mono"/>
+       <class id="app-public-api"/>
+    </host>
+    <host id="ftint-public-api-02.a.fsglobal.net">
+       <network address="10.34.158.216" partition="mono"/>
+       <class id="app-public-api"/>
+    </host>
+    <host id="ftint-public-api-01.a.fsglobal.net">
+       <network address="10.34.158.215" partition="mono"/>
+       <class id="app-public-api"/>
+    </host>
+  </service>
+  <service id="search">
+    <host id="ftint-search-ct-04.a.fsglobal.net">
+       <network address="10.34.158.148" partition="mono"/>
+       <class id="search"/>
+    </host>
+    <host id="ftint-search-ct-03.a.fsglobal.net">
+       <network address="10.34.158.147" partition="mono"/>
+       <class id="search"/>
+    </host>
+    <host id="ftint-search-ct-02.a.fsglobal.net">
+       <network address="10.34.158.146" partition="mono"/>
+       <class id="search"/>
+    </host>
+    <host id="ftint-search-ct-01.a.fsglobal.net">
+       <network address="10.34.158.145" partition="mono"/>
+       <class id="search"/>
+    </host>
+    <host id="ftint-search-cp-04.a.fsglobal.net">
+       <network address="10.34.158.144" partition="mono"/>
+       <class id="search"/>
+    </host>
+    <host id="ftint-search-cp-03.a.fsglobal.net">
+       <network address="10.34.158.143" partition="mono"/>
+       <class id="search"/>
+    </host>
+    <host id="ftint-search-cp-02.a.fsglobal.net">
+       <network address="10.34.158.142" partition="mono"/>
+       <class id="search"/>
+    </host>
+    <host id="ftint-search-cp-01.a.fsglobal.net">
+       <network address="10.34.158.141" partition="mono"/>
+       <class id="search"/>
+    </host>
+  </service>
+  <service id="session">
+    <host id="ftint-session-02.a.fsglobal.net">
+       <network address="10.34.157.239" partition="mono"/>
+       <class id="session"/>
+    </host>
+    <host id="ftint-session-01.a.fsglobal.net">
+       <network address="10.34.157.163" partition="mono"/>
+       <class id="session"/>
+    </host>
+  </service>
+  <service id="tem-ord">
+    <host id="ftint-tem-ord-api-03.a.fsglobal.net">
+       <network address="10.34.159.12" partition="mono"/>
+       <class id="tem-ord-app"/>
+    </host>
+    <host id="ftint-tem-ord-api-02.a.fsglobal.net">
+       <network address="10.34.159.11" partition="mono"/>
+       <class id="tem-ord-app"/>
+    </host>
+    <host id="ftint-tem-ord-api-01.a.fsglobal.net">
+       <network address="10.34.159.10" partition="mono"/>
+       <class id="tem-ord-app"/>
+    </host>
+  </service>
+  <service id="tem-ord-living-search-api">
+    <host id="ftint-tem-ord-living-03.a.fsglobal.net">
+       <network address="10.34.159.6" partition="mono"/>
+       <class id="app-fs-temple"/>
+    </host>
+    <host id="ftint-tem-ord-living-02.a.fsglobal.net">
+       <network address="10.34.159.5" partition="mono"/>
+       <class id="app-fs-temple"/>
+    </host>
+    <host id="ftint-tem-ord-living-01.a.fsglobal.net">
+       <network address="10.34.159.4" partition="mono"/>
+       <class id="app-fs-temple"/>
+    </host>
+  </service>
+  <service id="tem-ord-ors2tss">
+    <host id="ftint-tem-ord-ors2tss-03.a.fsglobal.net">
+       <network address="10.34.159.3" partition="mono"/>
+       <class id="app-fs-temple"/>
+    </host>
+    <host id="ftint-tem-ord-ors2tss-02.a.fsglobal.net">
+       <network address="10.34.159.2" partition="mono"/>
+       <class id="app-fs-temple"/>
+    </host>
+    <host id="ftint-tem-ord-ors2tss-01.a.fsglobal.net">
+       <network address="10.34.158.252" partition="mono"/>
+       <class id="app-fs-temple"/>
+    </host>
+  </service>
+  <service id="tem-ord-worker">
+    <host id="ftint-tem-ord-worker-q20-01.a.fsglobal.net">
+       <network address="10.34.158.166" partition="mono"/>
+       <class id="worker"/>
+       <class id="tem-ord-worker"/>
+    </host>
+    <host id="ftint-tem-ord-worker-q12-01.a.fsglobal.net">
+       <network address="10.34.158.165" partition="mono"/>
+       <class id="worker"/>
+       <class id="tem-ord-worker"/>
+    </host>
+    <host id="ftint-tem-ord-worker-q9-01.a.fsglobal.net">
+       <network address="10.34.158.164" partition="mono"/>
+       <class id="worker"/>
+       <class id="tem-ord-worker"/>
+    </host>
+  </service>
+  <service id="tem-temple">
+    <host id="ftint-tem-temple-03.a.fsglobal.net">
+       <network address="10.34.159.9" partition="mono"/>
+       <class id="tem-ord-app"/>
+    </host>
+    <host id="ftint-tem-temple-02.a.fsglobal.net">
+       <network address="10.34.159.8" partition="mono"/>
+       <class id="tem-ord-app"/>
+    </host>
+    <host id="ftint-tem-temple-01.a.fsglobal.net">
+       <network address="10.34.159.7" partition="mono"/>
+       <class id="tem-ord-app"/>
+    </host>
+  </service>
+  <service id="throttling">
+    <host id="ftint-throttling-02.a.fsglobal.net">
+       <network address="10.34.158.120" partition="mono"/>
+       <class id="throttling"/>
+    </host>
+    <host id="ftint-throttling-01.a.fsglobal.net">
+       <network address="10.34.158.119" partition="mono"/>
+       <class id="throttling"/>
+    </host>
+  </service>
+  <service id="upload">
+    <host id="ftint-upload-02.a.fsglobal.net">
+       <network address="10.34.158.81" partition="mono"/>
+       <class id="upload"/>
+    </host>
+    <host id="ftint-upload-01.a.fsglobal.net">
+       <network address="10.34.158.33" partition="mono"/>
+       <class id="upload"/>
+    </host>
+  </service>
+</reference>
+
