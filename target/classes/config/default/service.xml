@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reference id="default">
+  <service-urls>
+    <!-- This is the reference for all support api requests except staging and production where this configuration
+    has no effect. -->
+    <property name="support.api.host.urls" value="http://10.72.48.35:8080"/>
+  </service-urls>
+  <auditlog>
+    <!--  auditlog is designed to run against Oracle only      -->
+    <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+    <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
+    <property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:1521:FHUS"/>
+    <property name="hibernate.connection.username" value="fhus_aud"/>
+    <property name="hibernate.connection.password" value="fhus_aud"/>
+    <property name="hibernate.jdbc.batch_size" value="100"/>
+  </auditlog>
+  <authorities>
+    <property name="dataDir" value="/.s13nData"/>
+    <property name="stdExceptionRecordCount" value="10000"/>
+    <property name="long.running.query.millis" value="5000"/>
+    <property name="long.running.tracking.on" value="false"/>
+  </authorities>
+  <cas-admin-endpoint>
+    <property name="host" value="integration.familysearch.org"/>
+    <property name="port" value="80"/>
+    <property name="use-ssl" value="false"/>
+  </cas-admin-endpoint>
+  <cas-private-endpoint>
+    <property name="host" value="integration.familysearch.org"/>
+    <property name="port" value="80"/>
+    <property name="use-ssl" value="false"/>
+  </cas-private-endpoint>
+  <cas-public-endpoint>
+    <property name="host" value="integration.familysearch.org"/>
+    <property name="port" value="80"/>
+    <property name="use-ssl" value="false"/>
+  </cas-public-endpoint>
+  <cis-admin-endpoint>
+    <property name="host" value="integration.familysearch.org"/>
+    <property name="port" value="80"/>
+    <property name="use-ssl" value="false"/>
+  </cis-admin-endpoint>
+  <cis-private-endpoint>
+    <property name="host" value="integration.familysearch.org"/>
+    <property name="port" value="80"/>
+    <property name="use-ssl" value="false"/>
+  </cis-private-endpoint>
+  <cis-public-endpoint>
+    <property name="host" value="integration.familysearch.org"/>
+    <property name="port" value="80"/>
+    <property name="use-ssl" value="false"/>
+  </cis-public-endpoint>
+  <ct-publisher>
+    <property name="activemq.max.connections" value="1"/>
+    <property name="activemq.url" value="tcp://localhost:61616"/>
+    <property name="batch.size" value="100"/>
+    <!-- max sleep between publishing iterations, default is one minute -->
+    <property name="max.sleep.in.ms" value="60000"/>
+    <!-- minimum (starting) sleep between publishing iterations. -->
+    <!-- We exponentially back-off from this value to the max.sleep.in.ms if -->
+    <!-- there are errors publishing or there is nothing to publish -->
+    <property name="min.sleep.in.ms" value="0"/>
+    <property name="topic.name" value="VirtualTopic.CT.CHANGES"/>
+    <property name="sns.name" value="CT-CHANGES"/>
+    <!-- ttl is one month in ms -->
+    <property name="ttl.in.ms" value="2678400000"/>
+    <property name="publish.to.activemq" value="true"/>
+    <property name="publish.to.aws" value="false"/>
+  </ct-publisher>
+  <domain>
+    <!-- DISABLE SOME NEW FEATURES THAT ARE NOT YET READY FOR THIS REFERENCE -->
+    <property name="links.host.url" value="http://app003.app.dev.links.fsglobal.net:8080/links"/>
+
+    <property name="watch-notify.host.url" value="http://vip-app.dev.ft.fsglobal.net"/>
+    <property name="links.host.url" value="http://app003.app.dev.links.fsglobal.net:8080/links"/>
+    <property name="ftuser.host.url" value="http://integration.familysearch.org/ftuser"/>
+
+    <!-- when this flag is set to true, schema tests are done see: Luke Call-->
+    <property name="perform.domain.schema.validation" value="false"/>
+    <property name="dataAdminImsId" value="77733377"/>
+    <property name="max.failed.login.count" value="8"/>
+    <property name="user.disabled.wait.period" value="20"/>
+    <property name="max.failed.proxy.count" value="8"/>
+    <property name="proxy.disabled.wait.period" value="20"/>
+    <property name="max.user.search.results" value="100"/>
+    <property name="domain.cache.refresh.interval.millis" value="600000"/>
+    <property name="should.propagate.datamart" value="false"/>
+    <property name="use.cached.is.single.parent.calculated.answer" value="true"/>
+    <property name="calculate.is.single.parent.by.performing.database.queries" value="true"/>
+    <property name="enable.change.log" value="false"/>
+    <property name="enable.restandardization.on.read" value="false"/>
+
+    <!-- domain CT properties -->
+    <property name="use.ctperson" value="true"/>
+    <property name="enable.change.manager.tracking" value="true"/>
+    <property name="ctperson.migration.features" value="MIGRATE_ON_CT_PERSON_WRITE,MIGRATE_ON_CP_PERSON_DIRTY"/>
+    <property name="ctperson.sync" value="true"/>
+    <property name="ct.person.access.control.trusted" value="false"/>
+    <property name="migrate.and.sync.relationships" value="true"/>
+    <property name="relationship.authority.ct" value="true"/>
+    <property name="ct.person.combine.features" value="true"/>
+    <property name="ct.ordinance.tracking" value="true"/>
+    <property name="source.reference.include.tombstones" value="false"/>
+    <property name="max.user.relationship.preferences" value="15000"/>
+    <property name="sync.relationship.access.controls" value="true"/>
+    <property name="migrate.users.on.login.to.private.spaces" value="true"/>
+    <property name="ct.living.status.state" value="CT_LIVING_STATUS_DEATH_AUTHORITY_MIGRATION"/>
+    <property name="record.hint.feed.enabled" value="false"/>
+
+    <!-- if true, suppresses changes from being written to pub-sub -->
+    <property name="pubsub.suppress.publish" value="false"/>
+
+    <!-- system performance monitoring -->
+    <property name="enable.performance.timing.log" value="false"/>
+
+    <!-- domain persistence properties -->
+    <property name="updated.entities.warn.threshold" value="1000"/>
+    <property name="large.entity.threshold.compressed.bytes" value="100000"/>
+    <property name="long.running.query.millis" value="5000"/>
+    <!-- try turning "deferred delete" on for bulk-merge (beta2 only) -->
+    <property name="should.defer.entity.data.deletion" value="false"/>
+    <property name="person.placeholder.batch.size" value="200"/>
+    <property name="deferred.delete.batch.size" value="1000"/>
+    <property name="debug.alt.id.unique.constraint" value="false"/>
+    <!--
+      turn off data propagation completely by disabling the propagation component as stated in cp-domain-components.xml
+      there is NO LONGER a property by the name "propagation.component.disabled"
+    -->
+
+    <property name="domain.max.viewable.parents" value="25"/>
+    <property name="domain.max.viewable.sealingsToParents" value="25"/>
+    <property name="domain.max.viewable.spouses" value="350"/>
+    <property name="domain.max.viewable.children" value="100"/>
+    <property name="domain.max.viewable.sealingsToChildren" value="100"/>
+    <!--
+      limits for matching are not compounded 3 times like the viewable limits are for the pedigree view,
+      therefore, the acceptable limits could be roughly cubed and still have about the same response time.
+    -->
+    <property name="domain.max.parents.for.matching" value="50"/>
+    <property name="domain.max.spouses.for.matching" value="100"/>
+    <property name="domain.max.children.for.matching" value="150"/>
+    <property name="domain.log.message.when.exceeding.soft.storage.limit" value="true"/>
+    <property name="domain.throw.exception.when.exceeding.hard.storage.limit" value="false"/>
+    <property name="domain.hard.max.assertions.per.person" value="10000"/>
+    <property name="domain.hard.max.assertions.per.person" value="10000"/>
+    <property name="domain.soft.max.assertions.per.person" value="5000"/>
+    <property name="domain.hard.max.assertions.per.relationship" value="1000"/>
+    <property name="domain.soft.max.assertions.per.relationship" value="500"/>
+    <property name="domain.hard.max.assertion.values.per.person" value="10000"/>
+    <property name="domain.soft.max.assertion.values.per.person" value="5000"/>
+    <property name="domain.hard.max.assertion.values.per.relationshp" value="1000"/>
+    <property name="domain.soft.max.assertion.values.per.relationshp" value="500"/>
+    <property name="domain.hard.max.contributors.per.assertion.value" value="100"/>
+    <property name="domain.soft.max.contributors.per.assertion.value" value="50"/>
+    <property name="domain.hard.max.contributors.per.person" value="1000"/>
+    <property name="domain.soft.max.contributors.per.person" value="500"/>
+    <property name="domain.hard.max.contributors.per.relationship" value="1000"/>
+    <property name="domain.soft.max.contributors.per.relationship" value="500"/>
+    <property name="domain.hard.max.citations.per.assertion" value="100"/>
+    <property name="domain.soft.max.citations.per.assertion" value="50"/>
+    <property name="domain.hard.max.citations.per.person" value="20000"/>
+    <property name="domain.soft.max.citations.per.person" value="10000"/>
+    <property name="domain.hard.max.citations.per.relationship" value="2000"/>
+    <property name="domain.soft.max.citations.per.relationship" value="1000"/>
+    <property name="domain.hard.max.inner.persons" value="5000"/>
+    <property name="domain.soft.max.inner.persons" value="2500"/>
+    <property name="domain.hard.max.inner.relationships" value="500"/>
+    <property name="domain.soft.max.inner.relationships" value="250"/>
+    <property name="domain.hard.max.child.relationships" value="1000"/>
+    <property name="domain.soft.max.child.relationships" value="1000"/>
+    <property name="domain.hard.max.spouse.relationships" value="1000"/>
+    <property name="domain.soft.max.spouse.relationships" value="1000"/>
+    <property name="domain.hard.max.parent.relationships" value="100"/>
+    <property name="domain.soft.max.parent.relationships" value="100"/>
+    <property name="domain.hard.max.assertions.per.inner.person" value="500"/>
+    <property name="domain.soft.max.assertions.per.inner.person" value="500"/>
+    <property name="domain.hard.max.assertions.per.inner.relationship" value="50"/>
+    <property name="domain.soft.max.assertions.per.inner.relationship" value="50"/>
+    <property name="domain.max.name.length" value="256"/>
+    <property name="domain.max.date.length" value="128"/>
+    <property name="domain.max.place.length" value="256"/>
+    <property name="domain.max.user.defined.title.length" value="35"/>
+    <property name="domain.max.event.descripton.length" value="256"/>
+    <property name="max.Sharable.Note.Alternate.Id.Length" value="255"/>
+    <property name="max.Sharable.Citation.Alternate.Id.Length" value="255"/>
+    <property name="max.Sharable.Source.Alternate.Id.Length" value="255"/>
+    <property name="max.Sharable.Repository.Alternate.Id.Length" value="255"/>
+    <property name="use.Person.ACL.Store" value="true"/>
+    <property name="convert.Person.ACL.To.Use.Person.ACL.Store" value="true"/>
+    <!-- Display Wait Time Settings -->
+    <property name="enable.display.wait.time" value="false"/>
+    <property name="long.display.wait.time.threshold" value="3000"/>
+    <property name="memcached.server1.ip.port" value="192.168.6.46:29000"/>
+    <property name="memcached.server2.ip.port" value=""/>
+    <property name="memcached.server3.ip.port" value=""/>
+    <property name="memcached.server4.ip.port" value=""/>
+
+    <!-- Person Entity Version 8 Version-Conversion ACL fixup selector -->
+    <property name="force.post.instance.creation.is.living.calculation" value="true"/>
+
+    <!-- Each time "Conditions of Use" screen is modified, this value should be incremented -->
+    <property name="terms.and.conditions.version" value=".90"/>
+    <property name="max.inner.persons" value="250"/>
+    <!--
+        The "family.tree.max.ids.per.person.for.querying.reservations" property being 1000 (or less) prevents hitting Oracle's limit of 1000 for an IN clause.
+    -->
+    <property name="family.tree.max.ids.per.person.for.querying.reservations" value="1000"/>
+    <!-- Change this property to true to store any updated entity in the database using protocol buffer storage format. -->
+    <property name="use.protocol.buffer.storage.format" value="true"/>
+    <!-- Change this property to true to use the lookup Id inplace of the forward Id in queries -->
+    <!-- Be sure to update lookup_Id column in all applicable tables before setting this value to true -->
+    <!-- Change this property to true to Enable Change Log tracking service. -->
+    <property name="enable.changelog.tracking.service" value="true"/>
+    <property name="use.lookup.id.for.queries" value="false"/>
+    <property name="use.change.log.oracle.queries" value="true"/>
+
+    <property name="ct.limit.max.result.couples" value="32"/>
+    <property name="ct.limit.max.result.parents" value="12"/>
+    <property name="ct.limit.max.result.children" value="100"/>
+    <property name="pedigree.max.descendant.children.per.family" value="100"/>
+
+    <!--
+      Don't let watch-notify errors cause transactions to fail.
+      This should never be turned on for staging or production because it
+      would mean that watch-notify going down would effectively take down
+      family tree.
+    -->
+    <property name="fail.transactions.on.watch.validation.errors" value="false"/>
+    <!-- Turn off watch notify as it has been replaced on integration with the AWS CT-Watch-Notify-Bridge -->
+    <property name="atom.feed.enabled" value="false"/>
+  </domain>
+  <familytree-service-account>
+    <property name="service.account.name" value="FamilyTreeProcessUser"/>
+    <property name="service.account.developer.key" value="B9YS-W884-254Q-HQQ8-C45H-5Y95-DGX9-5GH5"/>
+    <property name="service.account.keystore.name" value="cp20100503.keystore"/>
+    <property name="service.account.keystore.private.key" value="app.cp.usys.org"/>
+    <!-- <property name="service.account.keystore.private.key" value="app.prod.ft"/> -->
+    <property name="service.account.sas.object.key" value="familytree-CIS_keystore"/>
+  </familytree-service-account>
+  <long-running-settings>
+    <!-- setting "default.error.threshold" to "0" turns off the long running transaction error check -->
+    <property name="default.error.threshold" value="900000"/>
+    <property name="kill.runaway.thread" value="true"/>
+  </long-running-settings>
+  <long-running-warning-settings>
+    <!-- setting "default.warning.threshold" to "0" turns off the long running transaction warning check -->
+    <property name="default.warning.threshold" value="60000"/>
+  </long-running-warning-settings>
+  <management>
+    <property name="jmx.agent.adaptor.http.mx4j" value="1"/>
+    <property name="jmx.agent.adaptor.http.mx4j.port" value="9002"/>
+    <property name="jmx.agent.connector.jmxmp" value="1"/>
+    <property name="jmx.agent.connector.jmxmp.port" value="9004"/>
+    <property name="notif-parser.jmx.agent.adaptor.http.mx4j.port" value="9102"/>
+    <property name="notif-parser.jmx.agent.connector.jmxmp.port" value="9104"/>
+    <!-- used by admin console -->
+    <property name="log.jmx.agent.adaptor.http.mx4j.port" value="9112"/>
+    <property name="log.jmx.agent.connector.jmxmp.port" value="9114"/>
+    <!-- used by admin console -->
+    <property name="session.jmx.agent.adaptor.http.mx4j.port" value="9122"/>
+    <property name="session.jmx.agent.connector.jmxmp.port" value="9124"/>
+    <!-- used by admin console -->
+    <property name="throttling.jmx.agent.adaptor.http.mx4j.port" value="9132"/>
+    <property name="throttling.jmx.agent.connector.jmxmp.port" value="9134"/>
+    <!-- used by admin console -->
+    <property name="tem-ord-worker.jmx.agent.adaptor.http.mx4j.port" value="9310"/>
+    <property name="tem-ord-worker.jmx.agent.connector.jmxmp.port" value="9311"/>
+    <property name="tem-ord-worker.jmxportresolver.componentname.for.hostclass" value="tem-ord-worker"/>
+    <!-- used by admin console -->
+    <property name="tem-ord-ors2tss.jmx.agent.adaptor.http.mx4j.port" value="9100"/>
+    <property name="tem-ord-ors2tss.jmx.agent.connector.jmxmp.port" value="9101"/>
+    <property name="app-fs-temple.jmxportresolver.componentname.for.hostclass" value="tem-ord-ors2tss"/>
+    <!-- used by admin console -->
+    <property name="tem-ord-api.jmx.agent.adaptor.http.mx4j.port" value="9094"/>
+    <property name="tem-ord-api.jmx.agent.connector.jmxmp.port" value="9095"/>
+    <property name="tem-ord-app.jmxportresolver.componentname.for.hostclass" value="tem-ord-api"/>
+
+    <property name="jvmresolver.supported.host.clases" value="app;app-monitoring;log;session;throttling;worker;tem-ord-worker;app-fs-temple;tem-ord-app"/>
+    <property name="event.username" value="fhus_msg"/>
+    <property name="event.password" value="fhus_msg"/>
+    <property name="event.tablename" value="events_table"/>
+    <property name="event.topicname" value="events"/>
+  </management>
+  <management-autoload-mbeans>
+    <!-- Default JMX Agent MBeans -->
+    <property name="Host:type=MemInfo" value="org.familysearch.jmx.tools.proc.MemInfo"/>
+    <property name="Host:type=LoadAvg" value="org.familysearch.jmx.tools.proc.LoadAvg"/>
+    <property name="Host:type=Stat" value="org.familysearch.jmx.tools.proc.Stat"/>
+    <!-- Other MBeans go here -->
+  </management-autoload-mbeans>
+  <messaging>
+    <property name="start.ramp.secs" value="5"/>
+    <property name="start.poll.delay.secs" value="2"/>
+    <!-- don't wait longer than this between tries asking for work -->
+    <property name="max.poll.delay.secs" value="60"/>
+    <!-- once fully backed off, try this many times before restarting (to get around AQ bug) -->
+    <property name="max.poll.tries.with.no.work" value="3"/>
+    <!--   Here are the fields necessary to define a queue:
+             Queue Number
+             Queue Name (must match queue name in AQOracleDDL.sql)
+             Oracle User Name
+             Number of normal message delivery attempts
+             Total number of message delivery attempts, including failed
+               message delivery attempts
+             Indicator for whether pre-initialized should be performed
+             Max query delay in seconds (maximum interval between when
+               we check for more work)
+             Reasonable heart beat interval in seconds (message handler
+               will be killed if 10x the heart-beat interval secs pass
+               without a heart-beat), 0 means let it run forever
+             Component name of the MessageHandler
+    -->
+    <!-- todo: assign heart-beat interval for gedcom messages -->
+    <property name="import.save.queue" value="5;IMPORT_SAVE;FHUS_AQ;3;5;true;60;360;ParseSaveMessageHandler"/>
+    <property name="import.match.merge.queue" value="6;IMPORT_MATCH_MERGE;FHUS_AQ;3;5;true;60;360;MatchMergeAssignOrdinancesMessageHandler"/>
+    <!-- heart-beat interval is configured per task processor -->
+    <property name="scheduler.queue" value="7;SCHED;FHUS_AQ;2;3;false;30;0;TaskMessageHandler"/>
+    <!--property name="scheduler.ims.queue" value="8;SCHED_IMS;FHUS_AQ;3;5;false;30;0;TaskMessageHandler"/-->
+    <!-- todo: assign heart-beat interval once the PostProcess can talk to the heart-beat monitor -->
+    <property name="enmasse.queue" value="10;ENMASSE;FHUS_AQ;3;5;false;300;120;EnmasseMessageHandler"/>
+    <property name="enmasse_cmis.queue" value="11;ENMASSE_CMIS;FHUS_AQ;3;5;false;300;120;EnmasseMessageHandler"/>
+    <property name="enmasse_temple.queue" value="30;ENMASSE_TEMPLE;FHUS_AQ;3;5;false;300;120;EnmasseMessageHandler"/>
+
+    <!-- ================================================================== -->
+    <!-- CP Search-feed Queues                                                 -->
+    <!-- ================================================================== -->
+
+    <property name="search_feed_interactive.queue" value="13;SEARCH_FEED_INTERACTIVE;FHUS_AQ;2;3;false;5;30;SFMessageHandler"/>
+    <property name="search_feed_user_batch.queue" value="14;SEARCH_FEED_USER_BATCH;FHUS_AQ;2;3;false;15;30;SFMessageHandler"/>
+    <property name="search_feed_system_batch.queue" value="15;SEARCH_FEED_SYSTEM_BATCH;FHUS_AQ;2;3;false;30;30;SFMessageHandler"/>
+    <property name="search_error_refeed.queue" value="18;SEARCH_ERROR_REFEED;FHUS_AQ;2;3;false;30;30;SFErrorRefeedMessageHandler"/>
+
+    <!-- ================================================================== -->
+    <!-- CT Search-feed Queues                                                 -->
+    <!-- ================================================================== -->
+
+    <property name="search_feed_ct_interactive.queue" value="33;SF_CT_INTERACTIVE;FHUS_AQ;2;3;false;5;30;CtSearchFeedMessageHandler"/>
+    <property name="search_feed_ct_user_batch.queue" value="34;SF_CT_USER_BATCH;FHUS_AQ;2;3;false;15;30;CtSearchFeedMessageHandler"/>
+    <property name="search_feed_ct_system_batch.queue" value="35;SF_CT_SYSTEM_BATCH;FHUS_AQ;2;3;false;30;30;CtSearchFeedMessageHandler"/>
+    <property name="search_feed_ct_error_refeed.queue" value="36;SF_CT_ERROR_REFEED;FHUS_AQ;2;3;false;30;30;CtSearchFeedErrorRefeedMessageHandler"/>
+
+    <property name="extraction.match.merge.queue" value="16;EXTRACTION_MATCH_MERGE;FHUS_AQ;3;5;true;60;360;MatchMergeAssignOrdinancesMessageHandler"/>
+    <property name="sweeper.queue" value="17;SWEEPER;FHUS_AQ;3;5;true;60;360;EnmasseMessageHandler"/>
+    <property name="scheduler.cmisx.queue" value="19;SCHED_CMISX;FHUS_AQ;2;3;false;30;30;TaskMessageHandler"/>
+
+    <!-- ================================================================== -->
+    <!-- Temple Queues                                                      -->
+    <!-- ================================================================== -->
+
+    <property name="tsafe.post.queue" value="9;TSAFE_POST;FHUS_AQ;3;4;true;30;360;TSafePostMessageHandler"/>
+    <property name="enmasse_temple.queue" value="30;ENMASSE_TEMPLE;FHUS_AQ;3;5;false;300;120;EnmasseMessageHandler"/>
+    <property name="scheduler.temple.queue" value="31;SCHED_TEMPLE;FHUS_AQ;2;3;false;30;0;TaskMessageHandler"/>
+    <property name="temple.queue" value="20;TEMPLE;FHUS_AQ;2;3;false;30;360;TempleQMsgHandler"/>
+    <property name="inventory.queue" value="12;INVENTORY;FHUS_AQ;2;3;false;15;120;InventoryQMsgHandler"/>
+
+    <property name="temple2cp.queue" value="21;TEMPLE2CP;FHUS_AQ;2;3;false;30;360;TempleCpQMsgHandler"/>
+    <!-- This is a TEST queue, and there really isn't a worker for this Q and none is expected. -->
+    <property name="temple2tests.queue" value="22;TEMPLE2TESTS;FHUS_AQ;2;3;false;30;360;TempleTestsQMsgHandler"/>
+    <!-- This Q is not ready yet.  Its listed so that you might know that it exists, but the CMIS-x team hasn't configured it for operations yet. -->
+    <property name="temple2cmisx.queue" value="23;TEMPLE2CMISX;FHUS_AQ;2;3;false;30;360;TempleCmisxQMsgHandler"/>
+    <property name="temple_admin.queue" value="24;TEMPLE_ADMIN;FHUS_AQ;2;3;false;30;360;TempleAdminQMsgHandler"/>
+    <property name="temple2cp_admin.queue" value="25;TEMPLE2CP_ADMIN;FHUS_AQ;2;3;false;30;360;Temple2CpAdminQMsgHandler"/>
+
+    <property name="temple_resv.queue" value="26;TEMPLE_RESV;FHUS_AQ;2;3;false;30;360;ReservationQMsgHandler"/>
+    <property name="temple_resv_admin.queue" value="27;TEMPLE_RESV_ADMIN;FHUS_AQ;2;3;false;30;360;TempleAdminQMsgHandler"/>
+    <property name="temple_resv_tests.queue" value="28;TEMPLE_RESV_TESTS;FHUS_AQ;2;3;false;30;360;ReservationTestsQMsgHandler"/>
+    <property name="enmasse_resv.queue" value="29;ENMASSE_RESV;FHUS_AQ;3;5;false;300;120;EnmasseMessageHandler"/>
+    <property name="temple2eat.queue" value="32;TEMPLE2EAT;FHUS_AQ;2;3;false;30;360;TempleTestsQMsgHandler"/>
+
+    <!-- uncomment to debug worker instances for the specified queue
+    <property name="debug.queue" value="8"/>
+    -->
+
+    <!-- Configure the Queue with its own spring configuration, or context file.  -->
+    <property name="queue.TEMPLE.context" value="temple-q"/>
+    <property name="queue.TEMPLE2CP.context" value="temple-q-cp"/>
+    <property name="queue.TEMPLE_ADMIN.context" value="temple-q"/>
+    <property name="queue.TEMPLE2CP_ADMIN.context" value="temple-q-cp"/>
+    <property name="queue.TEMPLE_RESV.context" value="temple-q-resv"/>
+    <property name="queue.TEMPLE_RESV_ADMIN.context" value="temple-q-resv"/>
+
+    <!-- Define the worker configuration for q5 or IMPORT_SAVE -->
+    <property name="data-import:worker-q5" value="q5m50p2"/>
+
+  </messaging>
+  <oss>
+    <property name="amf.media.type.supported" value="false"/>
+    <property name="backend.ct.uri" value=""/>
+    <property name="backend.tf.uri" value=""/>
+    <property name="backend.tss.uri" value=""/>
+    <property name="backend.cis-admin-api.uri" value=""/>
+    <property name="templeNotificationPrintedExperiment" value="true"/>
+    <property name="oss.host.url" value=""/>
+  </oss>
+  <persistence>
+    <!-- persistence.transaction.timeout -->
+    <!-- hibernate transactions will time out if they run longer than this value (in seconds)   -->
+    <!-- this setting will break the application out of a jdbc call and allow it to be killed   -->
+    <!-- by the long running transaction interceptor - the value of this setting should be      -->
+    <!-- coordinated with the long-running-settings default.error.threshold value               -->
+    <!-- as of 18 OCT 2010, this is a new property.  If this proves effective, as a means of    -->
+    <!-- shutting down long running transactions, the long running transaction interceptor may  -->
+    <!-- be removed                                                                             -->
+    <!-- Note: these properties should NOT begin with "hibernate" because we don't want them    -->
+    <!--   copied into the hibernate configuration in case they ever conflict with actual       -->
+    <!--   hibernate properties                                                                 -->
+    <property name="persistence.transaction.timeout.seconds" value="900"/>
+    <!-- persistence.query.timeout -->
+    <!-- individual hibernate SQL queries will time out if they run longer than this value (in seconds) -->
+    <!-- if any given SQL query exceeds this limit, the transaction will be aborted and rolled back     -->
+    <property name="persistence.query.timeout.seconds" value="900"/>
+    <!-- Control the name of the connection pool.  This is primarily used for how JMX beans are registered. -->
+    <property name="persistence.connection.pool.name" value="c3p0 connection pool"/>
+
+    <property name="ltv.short.tags.enabled" value="true"/>
+    <!-- thresholds for when to log if a commit or a rollback takes a long time -->
+    <property name="commit.millis.warn.threshold" value="30000"/>
+    <property name="end.millis.warn.threshold" value="60000"/>
+
+    <!-- Hibernate Dialect-specific properties -->
+    <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+    <property name="ucp.connectionFactoryClassName" value="oracle.jdbc.pool.OracleDataSource"/>
+    <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
+
+    <!-- no connect string by default -->
+    <!--<property name="hibernate.connection.url" value="jdbc:oracle:thin:@10.52.30.117:1521:f039"/>-->
+
+    <property name="connect.params.encrypted" value="false"/>
+    <!--
+         connect.params.get.credentials.from.sas controls where the hibernate.connection.username and hibernate.connection.password properties
+         (and optionally the hibernate.connection.url property) originate.  If set to 'true' then the SAS Object will be used. The SAS OBJECT
+         name must be specified in the "connect.params.sas.object" property. Otherwise service.xml is used. A simple check on a host would be
+         to do the following:
+           sudo apt-get install fs-sas-client
+           sas-client <SAS OBJECT> fchUser
+         where <SAS OBJECT> is the value specified for the "connect.params.sas.object" property.
+         If this does not error it should show the DB username.  If this errors, contact Security Team and have them determine the problem.
+    -->
+    <!--<property name="connect.params.get.credentials.from.sas" value="false"/>-->
+
+    <!-- Name of the SAS OBJECT containing the database connection properties. -->
+    <property name="connect.params.sas.object" value="FTCT-DB"/>
+
+    <!-- Database connection information - url shown only as an example-->
+    <!-- <property name="hibernate.connection.url" value="jdbc:oracle:thin:@10.72.36.42:1521:f224"/> -->
+    <property name="hibernate.connection.username" value="fhus"/>
+    <property name="hibernate.connection.password" value="fhus"/>
+
+    <!-- Hibernate connection provider properties -->
+    <!-- We OVERRIDE hibernate's connection provider to use the full capabilities of the c3p0 connection pool -->
+    <!-- Note: usually, Hibernate's code determines connection provider by acting on the first non-null value of the following properties:
+             1) "hibernate.connection.provider_class"  (here is where we override hibernate and programmatically configure c3p0)
+             2) "hibernate.connection.datasource"
+             3) "hibernate.c3p0.max_size" (not used by our custom c3p0 connection provider)
+             4) "hibernate.dbcp.maxActive"
+             5) "hibernate.proxool.xml", "hibernate.proxool.properties", "hibernate.proxool.existing_pool"
+             6) "hibernate.connection.url"
+         (See org.hibernate.cfg.ConnectionProviderFactory for details)
+         (also see www.mchange.com/projects/c3p0/index.html)
+    -->
+    <property name="hibernate.connection.provider_class" value="org.familysearch.persistence.impl.C3P0ConnectionProvider"/>
+    <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider"/>
+
+    <!-- Common connection pool properties. These work for both c3p0 and Oracle UCP connection pools. -->
+    <!-- These are converted to the correct names for the connection pool in use by the -->
+    <!-- C3P0FromCommonPropertyTranslator and UCPFromCommonPropertyTranslator classes in the fs-persistence project. -->
+
+    <property name="pool.minPoolSize" value="1"/>
+    <property name="pool.maxPoolSize" value="5"/>
+    <property name="pool.checkoutTimeout" value="30000"/>
+
+    <!-- This property controls how long connections can be idle before being closed. -->
+    <property name="pool.inactiveConnectionTimeout" value="900"/>
+
+    <!-- don't close connections unnecessarily or we'll send way too many connect requests -->
+    <!--
+      we originally thought that this maxConnectionAge parameter would
+      help with ORA-01483 errors by keeping things fresh, but it was
+      costing way too much on the database side to keep this setting
+    -->
+    <property name="pool.maxConnectionAge" value="0"/>
+    <!-- 5 min -->
+    <property name="pool.testConnectionOnCheckin" value="true"/>
+    <property name="pool.preferredTestQuery" value="SELECT 1 FROM DUAL"/>
+    <!-- keep our transactions squeaky clean by avoiding any possibility of committing partial results -->
+    <property name="pool.autoCommitOnClose" value="false"/>
+    <!-- limit the amount of time spent waiting for a connection, see OFT-15977 -->
+    <property name="pool.loginTimeout" value="15"/>
+
+    <!-- Configuration setting specific to c3p0 -->
+    <property name="c3p0.acquireIncrement" value="5"/>
+    <property name="c3p0.numHelperThreads" value="3"/>
+    <property name="c3p0.idleConnectionTestPeriod" value="300"/>
+    <!-- don't set c3p0.maxStatements since it may expose a c3p0 bug, see OFT-7020 -->
+    <!-- statement pooling might work now (in 0.9.1-pre10), we just haven't tested this since 0.9.0.2 -->
+
+    <property name="hibernate.jdbc.batch_size" value="0"/>
+    <property name="hibernate.use_outer_join" value="false"/>
+    <!--
+      Determines whether an alternate connection pool using a read-only database account is enabled,
+      which allows the query load to be shared between a primary database and its read-only replica.
+      If this is set to true then the <persistence-readonly> properties (and any overrides) are used
+      to configure the read-only connection pool. The default value is false.
+    -->
+    <!--<property name="readonly.alternate.connection.pool.enabled" value="false"/>-->
+  </persistence>
+  <sequence>
+    <property name="use.hsql.sequence" value="true"/>
+  </sequence>
+  <services>
+    <property name="use.long.running.transaction.interceptor" value="true"/>
+    <!-- if true, will serialize and deserialize EVERY parameter and result for EVERY service method call (used during testing to verify all values are serializable) -->
+    <property name="use.serializing.interceptor" value="false"/>
+    <property name="delay.before.first.failure.message.secs" value="10"/>
+    <property name="cmis.linked.record.units" value="9990070;9990097;9990089;369462"/>
+    <!--
+      these submission properties are only in the services section
+      because there is some code duplicated between data-import
+      and service, when this duplicate code is removed, we can
+      remove these properties from the services section
+    -->
+    <property name="submission.upload.protocol" value="http"/>
+    <property name="submission.upload.protocol.user" value=""/>
+    <property name="submission.upload.protocol.password" value=""/>
+    <property name="gedcom.upload.dir" value="/imports"/>
+    <property name="extraction.upload.dir" value="/imports"/>
+    <property name="enmass.upload.dir" value="/imports"/>
+    <property name="loggging.interceptor.depth.max" value="7"/>
+    <property name="view.timeline.item.max" value="100"/>
+
+    <!--This is here so that when a temple worker helps a read only member, they can act as if they are a "real" member (add data) so that they can do things like enter a dead father so that the living member could be sealed to the dead father.  Once there is no longer a need for a READ_ONLY_MEMBER, we can remove this property -->
+    <property name="allow.readonly.members.to.add.in.temple" value="true"/>
+  </services>
+  <session-component>
+    <!-- CP or "default" session configuration -->
+    <!-- how often the garbage collector runs (in seconds) -->
+    <property name="cp.session.garbagecollection.interval" value="120"/>
+    <!-- how long a session can be idle before it is garbage collected (in seconds) -->
+    <property name="cp.session.timeout.value" value="3600"/>
+    <!-- max amount of time that a session can live- 86400 seconds = 24 hours-->
+    <property name="cp.session.maxlifetime.value" value="86400"/>
+
+    <!-- TEMPLE session configuration -->
+    <!-- how often the garbage collector runs (in seconds)
+         Temple garbage collector only needs to run once every 4 hours
+    -->
+    <property name="temple.session.garbagecollection.interval" value="14400"/>
+    <!-- how long a session can be idle before it is garbage collected (in seconds)
+         for temple, let a session live for 3 days
+    -->
+    <property name="temple.session.timeout.value" value="259200"/>
+    <!-- max amount of time that a session can live- 604800 seconds = 7 days-->
+    <property name="temple.session.maxlifetime.value" value="604800"/>
+
+    <!-- session configuration classes -->
+    <property name="session.dao.class" value="org.familysearch.components.impl.session.dao.OracleSpringSessionDao"/>
+    <property name="session.dao.garbagecollector.class" value="org.familysearch.components.impl.session.dao.SessionGarbageCollectorDaoImpl"/>
+    <property name="session.dao.ssclass" value="org.familysearch.components.impl.session.dao.ServerSessionDao"/>
+    <property name="session.dao.ss.ipaddress" value="1.0.0.1"/>
+    <property name="session.dao.ss.monitor" value="10.72.64.78"/>
+  </session-component>
+  <session-service>
+    <property name="deep.updates" value="true"/>
+    <property name="pooling.tcp.transport.core.thread.pool" value="10"/>
+    <property name="pooling.tcp.transport.max.thread.pool" value="20"/>
+  </session-service>
+  <temple-reservation>
+    <!-- Give a semi-colon separated list of QueueIds that will receive a Mark In Progress message. ie: TEMPLE_RESV;TEMPLE_RESV_TESTS -->
+    <property name="queues" value="TEMPLE_RESV"/>
+    <property name="resv.direct.update" value="false"/>
+  </temple-reservation>
+  <temple-reservation-service-account>
+    <!-- service account information to use when making web service requests to read data from the temple system -->
+    <property name="service.account.name" value="ResvServiceAccount"/>
+    <property name="service.account.developer.key" value="D6XY-MTXL-JKC7-MWQQ-XK1W-8TQQ-Q25B-LHYC"/>
+    <property name="service.account.sas.object.key" value="RESV-CIS-Keystore"/>
+    <property name="service.account.keystore.private.key" value="resv"/>
+  </temple-reservation-service-account>
+  <throttle-service>
+    <property name="protocol.port" value="7371"/>
+    <property name="sync.request.thread.count" value="1"/>
+    <property name="async.request.thread.count" value="4"/>
+    <property name="socket.timeout" value="10000"/>
+    <property name="failover.retry.delay" value="30000"/>
+  </throttle-service>
+  <warning-performance-thresholds>
+    <!-- setting "default.performance.threshold" to "0" turns off the long running transaction warning check -->
+    <property name="default.performance.threshold" value="45000"/>
+  </warning-performance-thresholds>
+  <enmasse-oss>
+    <property name="oss.domain.url" value=""/>
+    <property name="oss.redirect.release.cards" value="false"/>
+    <property name="oss.redirect.unreserve.church" value="false"/>
+    <property name="oss.redirect.resubmit.church" value="false"/>
+    <property name="oss.redirect.delete.ran" value="false"/>
+  </enmasse-oss>
+</reference>

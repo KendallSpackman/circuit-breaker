@@ -19,8 +19,8 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import org.familysearch.logging.api.LogFactory;
 import org.familysearch.logging.api.Logger;
-import org.threeten.bp.Duration;
-import org.threeten.bp.Instant;
+import org.joda.time.Duration;
+import org.joda.time.Instant;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
@@ -39,7 +39,7 @@ public class CircuitBreaker {
     
     CircuitBreaker(String scope, HealthPolicy healthPolicy, Duration openStateTimeout) {
         this.scope = scope;
-        this.policy = new CachedCircuitBreakerPolicy(healthPolicy, Duration.ofSeconds(3));
+        this.policy = new CachedCircuitBreakerPolicy(healthPolicy, new Duration(3000));
         this.openStateTimeout = openStateTimeout;
     }
     
@@ -67,7 +67,7 @@ public class CircuitBreaker {
     
      
     private final class OpenState implements CircuitBreakerState {
-        private final Instant exitDate = Instant.now().plus(openStateTimeout);  
+        private final Instant exitDate = Instant.now().plus(openStateTimeout);
         
         @Override
         public boolean isRequestAllowed() {
@@ -106,7 +106,7 @@ public class CircuitBreaker {
         return newState;
     }
     
-    private static interface CircuitBreakerState {        
+    private interface CircuitBreakerState {
         boolean isRequestAllowed();       
     }
     

@@ -15,9 +15,9 @@
  */
 package utils.circuitbreaker.metrics;
 
-import org.threeten.bp.Duration;
-import org.threeten.bp.Instant;
 
+import org.joda.time.Duration;
+import org.joda.time.Instant;
 
 public interface Transactions {
     

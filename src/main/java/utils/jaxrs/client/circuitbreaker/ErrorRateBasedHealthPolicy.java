@@ -15,10 +15,10 @@
  */
 package utils.jaxrs.client.circuitbreaker;
 
+import org.joda.time.Duration;
 import utils.circuitbreaker.HealthPolicy;
 import utils.circuitbreaker.metrics.MetricsRegistry;
 import utils.circuitbreaker.metrics.Transactions;
-import org.threeten.bp.Duration;
 
 
 public class ErrorRateBasedHealthPolicy implements HealthPolicy  {
@@ -40,7 +40,7 @@ public class ErrorRateBasedHealthPolicy implements HealthPolicy  {
     
     @Override
     public boolean isHealthy(String scope) {
-        Transactions transactions =  metricsRegistry.transactions(scope).ofLast(Duration.ofSeconds(10));
+        Transactions transactions =  metricsRegistry.transactions(scope).ofLast(new Duration(10000));
 
         return ! (transactions.size() > thresholdMinReqPerMin &&        // check threshold reached?
                   (transactions.failed().size() == transactions.size()) && // every call failed?

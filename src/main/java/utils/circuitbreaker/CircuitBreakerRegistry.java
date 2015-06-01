@@ -17,7 +17,7 @@ package utils.circuitbreaker;
 
 
 import com.google.common.collect.Maps;
-import org.threeten.bp.Duration;
+import org.joda.time.Duration;
 
 import java.util.Map;
 
@@ -43,7 +43,7 @@ public class CircuitBreakerRegistry {
         
         CircuitBreaker circuitBreaker = circuitBreakerMap.get(scope);
         if ((circuitBreaker == null) && (circuitBreakerMap.size() < maxEntries)) {
-            circuitBreaker = new CircuitBreaker(scope, healthPolicy, Duration.ofSeconds(3));
+            circuitBreaker = new CircuitBreaker(scope, healthPolicy, new Duration(3000));
             circuitBreakerMap.put(scope, circuitBreaker);
         }
         

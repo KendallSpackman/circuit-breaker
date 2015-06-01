@@ -16,13 +16,13 @@
 package utils.jaxrs.container.circuitbreaker;
 
 
+import org.joda.time.Duration;
 import utils.circuitbreaker.HealthPolicy;
 import utils.circuitbreaker.metrics.MetricsRegistry;
 import utils.circuitbreaker.metrics.TransactionMetrics;
 import utils.jaxrs.container.Environment;
 import utils.jaxrs.container.Environment.Threadpool;
 import utils.jaxrs.container.tomcat.TomcatEnvironment;
-import org.threeten.bp.Duration;
 
 
 public class OverloadBasedHealthPolicy implements HealthPolicy  {
@@ -53,8 +53,8 @@ public class OverloadBasedHealthPolicy implements HealthPolicy  {
             if (metrics.running().size() > (pool.getMaxThreads() * 0.8)) {
 
                 // [3] is 50percentile higher than slow threshold?
-                Duration current50percentile = metrics.ofLast(Duration.ofMinutes(3)).percentile(50);
-                if (thresholdSlowTransaction.minus(current50percentile).isNegative()) {
+                Duration current50percentile = metrics.ofLast(new Duration(3000)).percentile(50);
+                if (thresholdSlowTransaction.minus(current50percentile).compareTo(Duration.ZERO) < 0) {
                     return false;
                 }
             }

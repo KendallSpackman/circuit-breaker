@@ -38,7 +38,6 @@
     <orderEntry type="library" name="Maven: asm:asm:3.1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-core:1.17.1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-client:1.17.1" level="project" />
-    <orderEntry type="library" name="Maven: org.threeten:threetenbp:1.3-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.familysearch.http:jersey-facade:1.0.b151" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject:guice:3.0" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
@@ -59,7 +58,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: commons-codec:commons-codec:1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.httpcache4j:httpcache4j-api:3.2" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1.1" level="project" />
-    <orderEntry type="library" name="Maven: joda-time:joda-time:1.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.httpcache4j.resolvers:resolvers-httpcomponents-httpclient:3.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpclient:4.0.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpcore:4.0.1" level="project" />
@@ -150,5 +148,6 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain.setuid:jetty-setuid-java:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-core:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
+    <orderEntry type="library" name="Maven: joda-time:joda-time:2.8" level="project" />
   </component>
 </module>

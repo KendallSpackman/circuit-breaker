@@ -15,9 +15,9 @@
  */
 package utils.circuitbreaker.metrics;
 
-import org.threeten.bp.Duration;
-import org.threeten.bp.Instant;
 
+import org.joda.time.Duration;
+import org.joda.time.Instant;
 
 public class Transaction {
     private final Instant startTime = Instant.now();
@@ -40,9 +40,9 @@ public class Transaction {
     
     public Duration getConsumedMillis() {
         if (endTime == null) {
-            return Duration.between(startTime, Instant.now());
+            return new Duration(startTime, Instant.now());
         } else {
-            return Duration.between(startTime, endTime);
+            return new Duration(startTime, endTime);
         }
     }
     

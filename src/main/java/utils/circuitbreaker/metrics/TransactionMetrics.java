@@ -17,8 +17,8 @@ package utils.circuitbreaker.metrics;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSet.Builder;
-import org.threeten.bp.Duration;
-import org.threeten.bp.Instant;
+import org.joda.time.Duration;
+import org.joda.time.Instant;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -166,14 +166,14 @@ public class TransactionMetrics implements Transactions {
                 int[] sortedValues = new int[all().size()];
                 int i = 0;
                 for(Transaction t : all()){
-                    sortedValues[i++] = (int) t.getConsumedMillis().toMillis();
+                    sortedValues[i++] = (int) (t.getConsumedMillis().getStandardSeconds() * 1000);
                 }
                 Arrays.sort(sortedValues);
 
                 if (percent == 0) {
-                    return Duration.ofMillis(sortedValues[0]);
+                    return new Duration(sortedValues[0]);
                 } else {
-                    return Duration.ofMillis(sortedValues[(percent * sortedValues.length) / 100]);
+                    return new Duration(sortedValues[(percent * sortedValues.length) / 100]);
                 }
             }
         }
