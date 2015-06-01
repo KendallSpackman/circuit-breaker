@@ -20,7 +20,7 @@ public class ConversationService {
         client2 = new JerseyFacadeClient();
         client2.addFilter(new MetricsFilter());
         client2.addFilter(new ClientCircuitBreakerFilter());
-        client2.setReadTimeout(1000);
+        client2.setReadTimeout(100);
         client2.setConnectTimeout(10000);
 //        client2.getProperties().put(ClientProperties.CONNECT_TIMEOUT, 10000);
 //        client2.getProperties().put(ClientProperties.READ_TIMEOUT, 2000);

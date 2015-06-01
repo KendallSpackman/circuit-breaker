@@ -15,9 +15,9 @@ import static org.testng.Assert.assertEquals;
 public class ConversationServiceTest {
     public class ThreadClass implements Runnable {
         public void run() {
-            ConversationService conversationService = new ConversationService(UriBuilder.fromUri("http://localhost:8080/hello-world-500").build());
-            ConversationService conversationService2 = new ConversationService(UriBuilder.fromUri("http://localhost:8080/hello-world-500?name=500").build());
-            for (int i = 0; i < 10; i++) {
+            ConversationService conversationService = new ConversationService(UriBuilder.fromUri("http://localhost:8080/hello-world").build());
+            ConversationService conversationService2 = new ConversationService(UriBuilder.fromUri("http://localhost:8080/hello-world?name=500").build());
+            for (int i = 0; i < 5; i++) {
                 try {
                     System.out.println(conversationService.getGreeting());
                 } catch (Exception e) {
@@ -78,28 +78,86 @@ public class ConversationServiceTest {
         }
     }
 
-    public void testConversation() {
-        PrintWriter writer = null;
-        try {
-            writer = new PrintWriter("withMetricsFilter.txt", "UTF-8");
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        ConversationService conversationService = new ConversationService();
-        for(int ctr = 0; ctr < 15; ctr++) {
-            long begin = System.nanoTime();
-            for (int i = 0; i < 120; i++) {
-                try {
-                    conversationService.getGreeting();
-                } catch (Exception e) {
-                    //System.out.println(e.getMessage());
-                    //e.printStackTrace();
-                }
+    public void testConversation_500() {
+        ConversationService conversationService = new ConversationService(UriBuilder.fromUri("http://localhost:8080/hello-world").build());
+        ConversationService conversationService2 = new ConversationService(UriBuilder.fromUri("http://localhost:8080/hello-world?name=500").build());
+        for (int i = 0; i < 5; i++) {
+            try {
+                System.out.println(conversationService.getGreeting());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-            long end = System.nanoTime();
-            writer.println(Long.toString((end - begin) / 1000000));
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
         }
-        writer.close();
+        for (int i = 0; i < 100; i++) {
+            try {
+                System.out.println(conversationService2.getGreeting());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            try {
+                Thread.sleep(150);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        while (true) {
+            try {
+                System.out.println(conversationService.getGreeting());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public void testConversation_ReadTimeout() {
+        ConversationService conversationService = new ConversationService(UriBuilder.fromUri("http://localhost:8080/hello-world").build());
+        ConversationService conversationService2 = new ConversationService(UriBuilder.fromUri("http://localhost:8080/hello-world?timeout=500").build());
+        for (int i = 0; i < 5; i++) {
+            try {
+                System.out.println(conversationService.getGreeting());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        for (int i = 0; i < 110; i++) {
+            try {
+                System.out.println(conversationService2.getGreeting());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            try {
+                Thread.sleep(80);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        while (true) {
+            try {
+                System.out.println(conversationService.getGreeting());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public void testParseUri() throws URISyntaxException {
